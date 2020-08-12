@@ -22,7 +22,7 @@ const run = async url => {
     const cacheKey = cid.toString() // this is deterministic, the string key from the CAR is not (yet)
     seen.add(cacheKey)
     missing.delete(cacheKey)
-    for (const link of block.reader().links()) {
+    for (const [,link] of block.reader().links()) {
       const cacheKey = link.toString()
       console.log(cacheKey)
       if (!seen.has(cacheKey)) missing.add(cacheKey)
